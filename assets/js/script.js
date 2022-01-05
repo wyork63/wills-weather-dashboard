@@ -51,3 +51,22 @@ var getLatLon = function(city) {
             alert('Unable to Connect')
         });
 };
+
+// get weather from the current day and 5 day forecast 
+var getWeather = function(lat, lon, city) {
+    var apiKey = 'ff8f64c1c4ae73a70e4b2c346addc528';
+    var apiUrl = 'https://api.openweathermap.org/data/2.5/onecall?lat=' + lat + '&lon=' + lon + '&exclude=minutely,hourly,alerts&units=imperial&appid=' + apiKey;
+    fetch(apiUrl)
+        .then(function(response) {
+            response.json().then(function(data){
+                var current = data.current;
+                var daily = data.daily;
+                displayCurrentWeather(current,city)
+                displayForecast(daily);
+            });
+        });
+};
+
+var displayCurrentWeather = function(data, city) {
+    console.log(data);
+}
