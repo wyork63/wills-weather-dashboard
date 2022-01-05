@@ -11,4 +11,4 @@ https://wyork63.github.io/wills-weather-dashboard/
 https://github.com/wyork63/wills-weather-dashboard
 
 ## Picture of Deployed application
-![Screenshot of Weather Dashboard](./assets/weather-dashboardimg.png)
+![Screenshot of Weather Dashboard](./assets/image-weather-dashboard.png)
