@@ -8,6 +8,7 @@ A simple dashboard using the OpenWeather One Call API that gives users the weath
 https://wyork63.github.io/wills-weather-dashboard/
 
 ## Link to Repo
+https://github.com/wyork63/wills-weather-dashboard
 
 ## Picture of Deployed application
-![Screenshot of Weather Dashboard]( insert link here)
+![Screenshot of Weather Dashboard](/assets/weather-dashboardimg.png)
