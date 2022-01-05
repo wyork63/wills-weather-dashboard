@@ -112,4 +112,59 @@ var displayCurrentWeather = function(data, city) {
     console.log(data);
     // clear results
     resultsContainerEl.textContent = "";
+
+    // add container for new weather
+    var currentWeatherEl = document.createElement('article');
+    currentWeatherEl.id = 'current';
+    currentWeatherEl.classList = "p-10";
+
+    // create h2 with name and date
+
+    // create paragraphs for temp wind and humidity 
+    var tempEl = document.createElement('p')
+    tempEl.innterHTML = 'Temp: ' + data.tempp + '<span>&#176;</span>F'
+
+    var windEl = document.createElement('p')
+    windEl.textContent = 'Wind: ' + data.wind_speed + ' MPH';
+    windEl.classList = 'p-20-0-10-0';
+
+    var humidityEl = document.createElement('p')
+    humidityEl.textContent = 'Humidity: ' +data.humidity + '%'; 
+    humidityEl.classList = 'P-10-0';
+    
+    var uvIndexEl = document.createElement('p')
+    uvIndexEl.innerHTML = "UV Index: <span id='uvi'>" + data.uvi + '</span';
+    uvIndexEl.classList = 'p-10-0';
+
+    // append these to current weather scetion
+    currentWeatherEl.appendChild(h2El);
+    currentWeatherEl.appendChild(imgEl);
+    currentWeatherEl.appendChild(tempEl);
+    currentWeatherEl.appendChild(windEl);
+    currentWeatherEl.appendChild(humidityEl);
+    currentWeatherEl.appendChild(uvIndexEl);
+
+    // append current weather section to results 
+    resultsContainerEl.appendChild(currentWeatherEl);
 }
+
+// displat forecast function 
+
+// will create container for forecast
+
+//function to add current date
+
+//add weather icon
+
+// create paragraph for temp wind humidiy and uvi
+
+
+// add all the elements to current weather section
+
+//add curent weather section to results
+
+//load info from previous search history when page starst
+
+loadCities();
+searchFormEl.addEventListener('submit', formSubmitHandler);
+previousSearchesEl.addEventListener('click',buttonClickHandler);
