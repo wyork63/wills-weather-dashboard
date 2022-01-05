@@ -4,7 +4,40 @@ var cityInputEl = document.querySelector('#city-input');
 var resultsContainerEl = document.querySelector('#results');
 
 // function where if a search has been done in this browser 
+var loadCities = function () {
+    var lastSearch = localStorage.getItem('last-search');
+    if (lastSearch) {
+        var citiesArray = localStorage.getItem('citiesArray');
+        if (citiesArray) {
+            citiesArray = JSON.parse(citiesArray);
+            var existingButton;
+            for (var i = 0; i < citiesArray.length; i++) {
+                if (citiesArray[i] === lastSearch) {
+                    existingButton = citiesArray[i];
+                    break
+                }
+            }
+            if (!existingButton) {
+                citiesArray.push(lastSearch)
+            }
+            // if it doesnt exist in local storage create array
+        } else {
+            citiesArray = [];
+            citiesArray.push(lastSearch)
+        }
+        localStorage.setItem('citiesArray', JSON.stringify(citiesArray));
+        // clear previous search buttons 
+        previousSearchesEl.textContent = '';
+        // add buttons based on array
+        for (var i = 0; i < citiesArray.length; i++) {
+            var cityBtn = document.createElement('button');
+            cityBtn.textContent = citiesArray [i];
+            cityBtn.classList = 'btn previous-search';
 
+            previousSearchesEl.appendChild(cityBtn);
+        }
+    }
+}
 // then pull city from city array 
 
 // and display it into buttons based on array
@@ -25,6 +58,14 @@ var formSubmitHandler = function(event) {
 };
 
 // add function when an old search button is clicked
+
+var buttonClickHandler = function(event) {
+    if (event.target.type === 'submit') {
+        var city = event.target.textContent;
+        getLatLon(city);
+        cityInputEl.textContent = '';
+    }
+}
 
 
 // get latitude and longitude of the city and pass it into the argument for getWeather() 
@@ -69,4 +110,6 @@ var getWeather = function(lat, lon, city) {
 
 var displayCurrentWeather = function(data, city) {
     console.log(data);
+    // clear results
+    resultsContainerEl.textContent = "";
 }
